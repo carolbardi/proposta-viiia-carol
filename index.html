@@ -1,0 +1,455 @@
+thub
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111827" />
+  <title>Proposta — Carolina Bardi × Viiia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Tokens de https://viiia.tech/styles.css */
+    @page { size: A4; margin: 14mm 14mm 16mm; }
+    :root {
+      --charcoal: #111827;
+      --charcoal-2: #0b1220;
+      --charcoal-3: #1a2235;
+      --indigo: #4F46E5;
+      --indigo-soft: #6366f1;
+      --indigo-deep: #3730a3;
+      --indigo-glow: rgba(79, 70, 229, 0.45);
+      --pure: #ffffff;
+      --ink: #0a0e1a;
+      --muted: #6b7280;
+      --line: rgba(17, 24, 39, 0.08);
+      --bg: #ffffff;
+      --fg: #111827;
+      --soft: #f5f5ff;
+      --warn: #92400e;
+      --warn-bg: #fffbeb;
+      --ok: #34d399;
+      --font-display: "Outfit", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #fafafa;
+      color: var(--fg);
+      font-family: var(--font-body);
+      font-size: 10.5pt;
+      line-height: 1.45;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+    .shell {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 28px 24px 48px;
+      background: var(--pure);
+      min-height: 100vh;
+      box-shadow: 0 0 0 1px var(--line);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 16px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand__mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 15pt;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .brand__orb {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: var(--charcoal);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .brand__orb svg { display: block; }
+    .brand__tag {
+      font-family: var(--font-body);
+      font-size: 8pt;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      background: var(--soft);
+      border: 1px solid rgba(79, 70, 229, 0.18);
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: 22pt;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin: 0 0 6px;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+    h1 em {
+      font-style: normal;
+      color: var(--indigo);
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: 11pt;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--charcoal);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 5px;
+      margin: 22px 0 10px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    h2::before {
+      content: "";
+      width: 3px;
+      height: 0.9em;
+      background: var(--indigo);
+      border-radius: 2px;
+      flex-shrink: 0;
+      align-self: center;
+    }
+    h3 {
+      font-family: var(--font-display);
+      font-size: 10.5pt;
+      font-weight: 500;
+      margin: 14px 0 6px;
+      color: var(--charcoal);
+    }
+    p { margin: 0 0 8px; }
+    ul, ol { margin: 0 0 8px; padding-left: 1.2rem; }
+    li { margin-bottom: 4px; }
+    strong { font-weight: 600; color: var(--charcoal); }
+    .meta {
+      font-size: 8.5pt;
+      color: var(--muted);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .box {
+      border: 1px solid var(--line);
+      background: #fafafa;
+      padding: 10px 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+    .box.accent {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.06) 0%, rgba(99, 102, 241, 0.03) 100%);
+      border-color: rgba(79, 70, 229, 0.2);
+      border-left: 3px solid var(--indigo);
+      border-radius: 0 8px 8px 0;
+    }
+    .box.warn {
+      background: var(--warn-bg);
+      border-color: rgba(251, 191, 36, 0.45);
+      border-left: 3px solid #fbbf24;
+      border-radius: 0 8px 8px 0;
+    }
+    .box strong.label {
+      font-family: var(--font-body);
+      font-size: 7.5pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: block;
+      margin-bottom: 4px;
+      color: var(--indigo);
+    }
+    .box.warn strong.label { color: var(--warn); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5pt;
+      margin: 6px 0 12px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 7px 9px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      font-family: var(--font-body);
+      font-size: 7.5pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: var(--soft);
+      color: var(--indigo-deep);
+    }
+    tbody tr:nth-child(even) td { background: #fafafa; }
+    .small { font-size: 8.5pt; color: var(--muted); }
+    a {
+      color: var(--indigo);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(79, 70, 229, 0.25);
+    }
+    a:hover { color: var(--indigo-deep); border-bottom-color: var(--indigo); }
+    .page-break { page-break-before: always; }
+    .closing {
+      margin-top: 16px;
+      padding: 12px 14px;
+      background: var(--charcoal);
+      color: #f3f4f6;
+      border-radius: 10px;
+      font-size: 10pt;
+    }
+    .closing strong { color: #fff; }
+    footer {
+      font-size: 7.5pt;
+      color: var(--muted);
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+    }
+    @media print {
+      body { background: #fff; }
+      .shell { box-shadow: none; max-width: none; padding: 0; }
+      .page-break { break-before: page; }
+      a { border-bottom: none; }
+    }
+    @media (max-width: 640px) {
+      .shell { padding: 20px 16px 36px; }
+      h1 { font-size: 18pt; }
+      .brand { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+
+  <header class="brand">
+    <a class="brand__mark" href="https://www.viiia.tech/" target="_blank" rel="noopener">
+      <span class="brand__orb" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="80" stroke="#4F46E5" stroke-width="28"/>
+          <circle cx="200" cy="200" r="50" stroke="#6366f1" stroke-width="18" opacity="0.6"/>
+          <circle cx="200" cy="200" r="18" fill="#4F46E5"/>
+        </svg>
+      </span>
+      viiia
+    </a>
+    <span class="brand__tag">Confidencial</span>
+  </header>
+
+  <h1>Proposta comercial <em>e de equity</em></h1>
+  <p class="meta">
+    Carolina Bardi · Head de Go-to-Market · Viiia Tech LTDA<br />
+    Em resposta à Carta Proposta CP-2026-004 · V1 (15/09/2026, válida até 30/09/2026)<br />
+    Para alinhamento com o Conselho de Sócios · set/2026
+  </p>
+
+  <div class="box accent">
+    <strong class="label">Em uma frase</strong>
+    No piloto eu topo o desenho enxuto (foco em validar produto com a Log-In). O que preciso cravar por escrito é o dia seguinte: upgrade de cash na saída do piloto, equity coerente com o risco e com o mandato, e regras claras para comissão e vesting — para que risco de produto ou da âncora Log-In não seja lido como falha comercial minha.
+  </div>
+
+  <h2>1. O que aceito no piloto</h2>
+  <ul>
+    <li>Mandato centrado em <strong>validação de produto com a Log-In</strong>.</li>
+    <li><strong>R$ 12.000/mês PJ</strong> + benefícios de saúde (pedido: SulAmérica Executivo para mim <strong>e dependente Laura</strong>).</li>
+    <li>Comissão praticamente <strong>zero no piloto</strong>, com Log-In / base atual fora da base comissionável — alinhado à carta.</li>
+    <li>Início previsto <strong>05/10/2026</strong>; fim do piloto para fins deste pacote: <strong>01/01/2027</strong>.</li>
+  </ul>
+  <p><strong>Papel no piloto (proposta de escopo):</strong> construção de pipe com ICPs / early adopters; estruturação de funil (demos); presença digital (site/SEO, LinkedIn e avaliação de outras mídias); estudo de precificação / insumos para política de preços. <em>Não</em> meta de logos pagos neste período.</p>
+
+  <div class="box warn">
+    <strong class="label">PJ / enquadramento</strong>
+    Prefiro começar enxuto. Na prática, honorários de R$ 12k/mês (~R$ 144k/ano) <strong>não cabem no MEI</strong> (teto vigente em 2026: R$ 81k/ano). Proposta: abrir / operar como <strong>ME no Simples Nacional</strong> (CNAE de serviços compatível), com apoio da Viiia nos custos de constituição, como previsto na carta. Contador valida o desenho.
+  </div>
+
+  <h2>2. Perguntas para alinhar antes / na reunião</h2>
+  <ol>
+    <li><strong>Kill list:</strong> para quem não posso vender? O que posso vender no piloto — outros pilotos ou produto “out of the box”?</li>
+    <li>Se a Log-In não avançar ou o <strong>produto impedir o faturamento</strong> de um cliente que eu trouxe, isso não pode ser lido como falha minha na comissão nem no vesting (estou fora da entrega/negociação técnica da Log-In).</li>
+  </ol>
+
+  <h2>3. Cash — a partir do fim do piloto (01/01/2027)</h2>
+  <table>
+    <thead>
+      <tr><th>Item</th><th>Proposta</th><th>Nota</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Honorários</td>
+        <td><strong>R$ 18.000/mês PJ</strong></td>
+        <td>Upgrade que vocês já sinalizaram oralmente (Fase 2 / pós-piloto); precisa estar por escrito.</td>
+      </tr>
+      <tr>
+        <td>Benefícios</td>
+        <td>Manter SulAmérica (pedido: titular + 1 dependente)</td>
+        <td>Carta atual: 1 vida; peço incluir Laura.</td>
+      </tr>
+      <tr>
+        <td>Comissão</td>
+        <td><strong>10% sem teto mensal</strong></td>
+        <td>Sobre receita recorrente de negócios que eu fechar (novos + expansão das contas que trouxe). Log-In / base atual: manter exclusão se for a política; reviso com vocês em 12 meses.</td>
+      </tr>
+      <tr>
+        <td>Gatilho de pagamento</td>
+        <td>Comissão sobre <strong>contrato assinado</strong></td>
+        <td>Não apenas “quando a Viiia receber do cliente” — reduz risco de eu arcar com falha de produto/entrega/inadimplência alheia ao comercial.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="small">Referência de mercado (para contexto, não para “igualar big tech” no piloto): pacotes de VP/Head de vendas em SaaS maduro costumam ter fixo bem acima de R$ 12k e variável material com produto pronto (ex. discussões públicas Saastr / faixas enterprise). No piloto entro no risco com cash baixo e comissão inerte; o upgrade em 01/01/2027 e o equity abaixo compensam esse desenho.</p>
+
+  <h2>4. Equity — proposta</h2>
+  <table>
+    <thead>
+      <tr><th>Elemento</th><th>Proposta</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Instrumento</td>
+        <td><strong>Opção / ESOP (side letter)</strong> — não conversão automática em quotas de sócia no dia 1.</td>
+      </tr>
+      <tr>
+        <td>Piso</td>
+        <td><strong>5% FDE</strong> no cap table <strong>atual (pré–entrada societária Log-In)</strong>.</td>
+      </tr>
+      <tr>
+        <td>Upside</td>
+        <td><strong>+5%</strong> (total <strong>10%</strong>) se bater a meta do mês 24 (seção 5).</td>
+      </tr>
+      <tr>
+        <td>Anti-diluição pontual</td>
+        <td>Na <strong>entrada societária da Log-In</strong>, minha fatia de <strong>5%</strong> <strong>não dilui</strong>; diluem os sócios atuais. Depois dessa entrada, diluo junto com todos nas rodadas seguintes, se todos diluírem.</td>
+      </tr>
+      <tr>
+        <td>Vesting — piso 5%</td>
+        <td>Início do relógio de vesting após o piloto. <strong>Cliff de 6 meses a partir de 01/01/2027</strong> (primeiro vest ~01/07/2027). Em seguida vesting linear do saldo até completar o cronograma acordado na side letter.</td>
+      </tr>
+      <tr>
+        <td>Vesting — +5% da meta</td>
+        <td>Se a meta do mês 24 for atingida, os +5% vestem de forma linear entre o <strong>mês 24 e o mês 48</strong> contados da minha entrada (05/10/2026).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Triggers (single-trigger)</h3>
+  <ol>
+    <li><strong>Mudança de controle:</strong> se pessoa/grupo passar a deter <strong>&gt;50%</strong> do capital votante / controle da Viiia, ou houver venda de substancialmente todos os ativos → aceleração do vesting pendente a <strong>100%</strong>. <em>Não se aplica</em> a aporte minoritário típico (ex. 15–20% sem controle).</li>
+    <li><strong>Demissão sem justa causa após o cliff</strong> (com cumprimento das metas/escopo definidos para o período) → aceleração imediata de <strong>2,5% FDE</strong> (metade do piso de 5%).</li>
+  </ol>
+
+  <h2>5. Meta dos +5% (mês 24)</h2>
+  <p><strong>MRR elegível</strong> = receita recorrente de <strong>software/produto</strong>. <strong>Não entram:</strong> taxa de exclusividade; setup one-shot; pass-through (ex. tokens de IA reembolsáveis).</p>
+  <p>No <strong>mês 24</strong> a partir da entrada, os +5% são devidos se <strong>qualquer</strong> critério abaixo for verdadeiro:</p>
+  <table>
+    <thead>
+      <tr><th>Cenário</th><th>Critério</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Kill list / exclusividade <strong>estrita</strong> (como no espírito do piloto)</td>
+        <td>MRR elegível de clientes <strong>≠ Log-In</strong> ≥ <strong>R$ 250.000</strong></td>
+      </tr>
+      <tr>
+        <td>Kill list / exclusividade <strong>afrouxada</strong> (waiver escrito permitindo armadores e/ou OTMs antes bloqueados)</td>
+        <td>MRR elegível de clientes <strong>≠ Log-In</strong> ≥ <strong>R$ 350.000</strong></td>
+      </tr>
+      <tr>
+        <td>Alternativa por logos</td>
+        <td>≥ <strong>12 logos pagos</strong> fora da Log-In</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="small">Leitura: isso não é “dobrar a fatura total misturando exclusividade e amadurecimento da Log-In”. É criar um segundo motor de receita de produto (~R$ 3,0–4,2 mi ARR externo) ou provar tração por número de clientes. Atingível só com produto vendável e regras de exclusividade claras — por isso a kill list precisa estar escrita.</p>
+
+  <div class="page-break"></div>
+
+  <h2>6. Por que não 1% — leitura dos textos que vocês usaram</h2>
+  <p>Concordo com o princípio de transparência do playbook Index:</p>
+  <div class="box">
+    “Transparency is fundamental to a healthy startup. If a remuneration policy needs to stay secret, there’s something wrong with it.”
+    <span class="small"> — Index Ventures, <em>Rewarding Talent</em></span>
+  </div>
+
+  <h3>6.1 Paul Graham / The Family (no mesmo capítulo Index)</h3>
+  <p>Vale abrir mão de <strong>n%</strong> se, com o que se ganha em troca, o pedaço que sobra <strong>(100−n)%</strong> fica valendo mais do que <strong>100%</strong> valia antes.</p>
+  <p><strong>1%</strong> só é coerente se a tese for que o Head de GTM melhora o valor esperado da empresa em ~<strong>1%</strong> — ou seja, que o comercial quase não depende desse papel. Isso não combina com mandato de abrir mercado e diluir concentração na Log-In.</p>
+  <p>Faixa coerente com risco + mandato: <strong>5% piso</strong>; <strong>10%</strong> se as metas agressivas do mês 24 forem batidas. Ainda abaixo do teto teórico se eu atribuísse ao GTM uma melhoria ~20% no expected value.</p>
+
+  <h3>6.2 Matriz Index — grants em seed (FDE %)</h3>
+  <table>
+    <thead>
+      <tr><th>Função</th><th>Senior</th><th>Mid</th><th>Junior</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Engineering</td><td>1,00%</td><td>0,45%</td><td>0,15%</td></tr>
+      <tr><td>Product &amp; Design</td><td>1,00%</td><td>0,45%</td><td>0,05%</td></tr>
+      <tr><td>Business Development</td><td><strong>0,35%</strong></td><td>0,10%</td><td>0,05%</td></tr>
+      <tr><td>Community &amp; Marketing</td><td>0,90%</td><td>0,25%</td><td>0,05%</td></tr>
+    </tbody>
+  </table>
+  <p>Fonte: <a href="https://www.indexventures.com/rewarding-talent/calculating-initial-grants-at-seed">Index — Calculating initial grants at seed</a>.</p>
+  <ul>
+    <li>O <strong>1%</strong> da carta só “parece Index” se eu for lida como commercial média / C-level já em Series A.</li>
+    <li>Head de GTM no <strong>núcleo</strong>, reporte ao Conselho, comissão morta no piloto e cash ~¼ do mercado → a própria Index aponta grants <strong>2–3%</strong> em casos especiais (completar skill-set do time fundador). Com cash baixo + Graham, <strong>5%</strong> é o piso coerente.</li>
+    <li>Na Series A, VP Sales costuma ter <em>menos</em> equity porque a <strong>comissão é grande parte do pacote</strong>. Aqui o inverso: comissão sem maturidade de produto no piloto — a lógica “sales = menos equity” <strong>não se aplica</strong>.</li>
+  </ul>
+
+  <h3>6.3 Mercado de comp de vendas SaaS (contexto)</h3>
+  <ul>
+    <li><a href="https://www.saastr.com/dear-saastr-how-do-i-structure-a-comp-package-for-our-first-vp-of-sales/">Saastr — first VP Sales</a>: discussões de equity ~0,5–1,5% quando o <strong>salário já é de mercado</strong> e há produto; há menção a complementar fixo até a comissão “ligar”. No meu caso <strong>não peço piso de comissão no piloto</strong> — entro no risco com o menor cash do desenho atual.</li>
+    <li><a href="https://www.everstage.com/sales-compensation/vp-of-sales-compensation-structure">Everstage</a>: em early stage, fixo costuma ser ≥ variável (60/40 ou 70/30). Aqui, no piloto, é o contrário (fixo baixo + variável inerte).</li>
+    <li>Referência pessoal de aceleração (Oracle): 50/50 no target; acima de ~125% a variável acelerava — ex. 163% da cota ≈ 200% do salário fixo anual em variável. Por isso peço comissão <strong>sem teto</strong> quando o produto estiver vendável (sem pedir aceleradores formais agora).</li>
+  </ul>
+
+  <h2>7. Resumo do pacote pedido</h2>
+  <table>
+    <thead>
+      <tr><th>Fase</th><th>Cash</th><th>Equity</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Piloto (até 01/01/2027)</td>
+        <td>R$ 12k PJ + plano (titular + 1 dependente)</td>
+        <td>Grant de opção 5% (side letter); vesting conforme §4</td>
+      </tr>
+      <tr>
+        <td>Após 01/01/2027</td>
+        <td>R$ 18k PJ + comissão 10% sem teto, sobre contrato assinado</td>
+        <td>Idem; +5% se meta mês 24</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>8. Próximos passos</h2>
+  <ol>
+    <li>Alinhar kill list e escopo do piloto na reunião.</li>
+    <li>Fechar os números deste documento (cash + equity + meta).</li>
+    <li>Assinar <strong>contrato de prestação</strong> + <strong>side letter de opção/vesting</strong> no mesmo momento (01/10/2026), com metas/escopo anexos — sem cheque em branco.</li>
+  </ol>
+
+  <p class="closing">Estou apostando na <strong>Viiia</strong>: cash baixo e comissão zero no piloto para organizar a casa e o pipe. Peço em troca regras claras e upside coerente com o risco e com o papel de Head de GTM.</p>
+
+  <footer>
+    Carolina Bardi · Em resposta à CP-2026-004 · Confidencial · Este documento não substitui aconselhamento jurídico/contábil · Fontes: Index Rewarding Talent; Saastr; Everstage; Carta Proposta Viiia; Proposta comercial Viiia × Log-In · Identidade visual alinhada a <a href="https://www.viiia.tech/">viiia.tech</a>.
+  </footer>
+
+</div>
+</body>
+</html>
